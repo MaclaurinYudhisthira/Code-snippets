@@ -5,7 +5,6 @@
 
 """
 
-
 import sqlalchemy as sa
 from sqlalchemy.orm import Mapped, mapped_column, declarative_base, sessionmaker
 
@@ -21,17 +20,18 @@ class Users(Base):
     username: Mapped[str] = mapped_column(unique=True, nullable=False)
     email: Mapped[str] = mapped_column(unique=True, nullable=False)
 
-    def __init__(self,username,email):
-        self.username=username
-        self.email=email
+    def __init__(self, username, email):
+        self.username = username
+        self.email = email
 
     def __repr__(self):
         return f"<User(id={self.id}, username={self.username}, email={self.email})>"
-    
+
+
 Base.metadata.create_all(DB)
 
 user = Users(username="Kishan1", email="a1@b.c")
-user2 = Users(username="Kishan2",email="a2@b.c")
+user2 = Users(username="Kishan2", email="a2@b.c")
 
 with SESSION() as session:
     session.add(user)

@@ -13,9 +13,11 @@ app.add_middleware(
     expose_headers=["*"],
 )
 
+
 @app.get("/")
 def home():
     return {"message": "Service is running"}
+
 
 if __name__ == "__main__":
     uvicorn.run(app=app)
